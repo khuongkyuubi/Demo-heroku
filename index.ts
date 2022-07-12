@@ -16,6 +16,9 @@ mongoose.connect(DB_URI)
 .then(() => console.log('DB Connected!'))
 .catch(error => console.log('DB connection error:', error.message));
 app.use(bodyParser.json());
+app.get("/", ((req, res, next) => {
+  return res.json({message: "Hello World!"})
+}))
 
 app.use('/book', bookRoutes);
 app.listen(PORT, () => {
